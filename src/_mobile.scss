@@ -1,0 +1,454 @@
+@media (max-width: 768px) {
+
+
+    body {
+        width: 100vw;
+        overflow-x: hidden;
+        color: $noir;
+        overflow-y: scroll;
+
+        #root {
+            width: 100vw;
+            overflow-y: scroll;
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .texture {
+            min-height: 100vh;
+            position: fixed;
+            mix-blend-mode: multiply;
+            z-index: -5;
+            min-width: 100vw;
+            
+        }
+
+
+        header {
+            position: fixed;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+            display: flex;
+            // align-items: center;
+            // justify-content: center;
+            bottom: 5vh;
+            z-index: 2;
+            padding: 8vh 2vw;
+
+            a {
+                pointer-events: auto;
+                   transition: all ease 0.3s;
+            }
+        }
+
+        .height-container {
+         
+            height: 10000vh;
+        }
+
+        // homepage
+
+        .home {
+            position: fixed;
+            inset : 0;
+            z-index: 1;
+            pointer-events: none; 
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            align-items: start;
+            justify-content: start;
+            padding: 8vh 2vw;
+            top: 5vh;
+
+            .presentation {
+                p {
+                    transition: all ease 0.3s;
+                }
+            }
+        }
+
+        // fin homepage
+
+        // project page
+
+        .projects-page-wrapper {
+            // background-color: pink;
+            position: absolute;
+            left: 0;
+            top: -2vh;
+            width: 100vw;
+            min-height: 100vh;
+        //     // pointer-events: none;
+            z-index: 10;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 100vh;
+            transition: all 0.5s ease;
+        //     overflow-y: scroll;
+
+            .projects-page {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                height: fit-content;
+                width: 100vw;
+                padding-top: 5vh;
+                transition: all 0.5s ease;
+           
+
+                .project-link{
+                    text-decoration: none;
+                    color: inherit;
+                    width: 100vw;
+                    padding: 0 5vw;
+                    display: flex;
+                    flex-direction: column;
+                   pointer-events: none;
+                  
+
+                }
+
+                article {
+                    height: 25vh;
+                    width: 45vw;
+                    margin-top: 2vh;
+                    pointer-events: auto;
+
+                    h2 {
+                        margin: 0;
+                        margin-top: 0.5vh;
+                    }
+                    p {
+                        margin: 0;
+                    }
+
+                    .img {
+                        width: 100%;
+                        height: 80%;
+                        background-color: grey;
+                        filter: drop-shadow(-5px 7px 7px rgba(0, 0, 0, 0.25));
+                    }
+                }
+
+                .bothiam {
+                    height: 30vh;
+                    width: 80vw;
+                    
+                 
+                }
+
+                .fiftylab {
+                    width: 50vw;
+                    height: 40vh;
+                    align-self: end;
+                }
+
+                .woodblocks {
+                    width: 70vw;
+                    height: 35vh;
+                    
+                }
+
+                .ezracollective {
+                    height: 40vh;
+                    width: 45vw;
+                    align-self: end;
+                }
+
+                .bxbox {
+                    height: 37vh;
+                    width: 50vw;
+                }
+
+                .interlinked {
+                    height: 37vh;
+                    width: 45vw;
+                    align-self: end;
+                }
+
+                .lettering {
+                    width: 55vw;
+                    height: 35vh;
+                }
+
+                .ilionasreleaseparty {
+                    width: 70vw;
+                    height: 30vh;
+                    align-self: end;
+                }
+            }
+        }
+
+        .is-detail-page {
+            pointer-events: none;
+            opacity: 0!important;
+            transition: 0.5s all ease;
+
+            .project-link {
+                pointer-events: none;
+
+                article {
+                    pointer-events: none;
+                }
+            }
+        }
+
+        // fin project wrapper 
+
+        // project detail
+
+        .project-detail-overlay {
+            position: fixed;
+            width: 100vw;
+            height: 100vh;
+            top: 0;
+            padding: 3vh 5vw;
+            z-index: 5;
+            transition: all 0.5s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-color: $blanc;
+        }
+
+        .project-detail-modal {
+            display: flex;
+            width: 90vw;
+            height: 85vh;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            transition: all 0.5s ease;
+        }
+
+        // faudra faire une lightbox pour les images
+
+        .project-detail-image {
+            width: 100%;
+            // height: 80%;
+            transition: all 0.5s ease;
+            flex: 1;
+             transition: all 0.5s ease;
+    object-fit: cover;
+    min-height: 0;
+        }
+
+        .img-interlinked {
+            flex-direction: column-reverse!important;
+        }
+
+        .img-ilionasreleaseparty {
+            gap: 0!important;
+        }
+
+        // faudra faire un espèce de truc déroulant pour le texte
+
+        .project-detail-content {
+            background-color: $blanc;
+            min-height: 20%;
+            height: fit-content;
+            width: 100%;
+            padding: 1vh 2vw;
+            display: flex;
+            align-items: start;
+            justify-content: end;
+            flex-direction: column;
+            transition: all 0.5s ease;
+            position: relative;
+            z-index: 5;
+            
+
+
+            h1 {
+                margin: 0;
+                font-size: 8vw;
+            }
+
+            h2 {
+                font-size: 4.5vw;
+                font-style: italic;
+                font-weight: normal;
+                margin: 0;
+            }
+
+            p {
+                margin: 0;
+                font-size: 4vw;
+                margin-top: 1vh;
+                // max-height: 10vh;
+                // overflow: hidden;
+                transition: all ease 0.3s;
+            }
+
+            &.active p {
+                max-height: none;
+                overflow: visible;
+                transition: all ease 0.3s;
+            }
+
+            .read-more-button {
+                position: relative;
+                left: 66vw;
+                top: -2.2vh;
+                background: none;
+                text-decoration: underline;
+                border: none;
+            }
+            
+           
+            
+
+            .next-button {
+                margin-top: 3vh;
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                height: 4vh;
+                // background-color: red;
+                position: relative;
+
+           
+                
+            }
+        }
+
+        .close-button {
+            position: absolute;
+            top: 3.8vh;
+            right: 5vw;
+            text-decoration: underline;
+            background: none;
+            border: none;
+            font-size: 2.2vh;
+        }
+
+        .div-next-button {
+            width: 100vw;
+            height: 4vh;
+            position: absolute;
+            z-index: 20;
+            bottom: 4vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            
+
+            button {
+                    background: none;
+                    border: $noir solid 1px;
+                    text-decoration: underline;
+                    font-size: 4vw;
+                    border: none;
+                    
+                }
+
+        }
+
+        .lightbox-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: $blanc;
+    z-index: 10000;  // Au-dessus de tout
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: zoom-out;
+    transition: all 0.3s ease;
+}
+
+.lightbox-close {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    background: white;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    cursor: pointer;
+    z-index: 10001;
+    transition: all 0.3s ease;
+    
+    &:hover {
+        background: #f0f0f0;
+    }
+}
+
+.project-detail-image {
+    cursor: zoom-in;  // Indique qu'on peut cliquer pour agrandir
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-y: scroll;
+    gap: 3vh;
+
+    video {
+        margin-top: 0!important;
+        width: 100%!important;
+        margin-bottom: 0!important;
+    }
+    
+
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain!important;
+    }
+}
+
+        
+
+        .hidden-bloc {
+            height: 12vh;
+            width: 100%;
+            background-color: $blanc;
+            z-index: 10;
+            position: absolute;
+            bottom: 0;
+        }
+
+        // footer
+
+        footer {
+            position: fixed;
+            bottom: -6vh;
+        
+            width: 100vw;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 2vh;
+
+            button {
+                background: none;
+                border: none;
+                text-decoration: underline;
+                font-size: 4.3vw;
+                cursor: pointer;
+            }
+
+            .social-links {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 4vw;
+            }
+
+            img {
+                height: 5vh;
+            } 
+        }
+    }
+}

@@ -1,0 +1,49 @@
+@import url("https://use.typekit.net/stq6ovt.css");
+@import "variables";
+@import "mobile";
+@import "desktop";
+
+body {
+    margin: 0;
+    font-family: "logic-monospace", mono;
+    font-weight: 400;
+    font-style: normal;
+}
+
+button {
+    font-family: "logic-monospace", mono;
+    // font-weight: 400;
+    font-style: normal;
+}
+
+h1 {
+    font-family: "sofia-pro", sans-serif;
+font-weight: 700;
+font-style: normal;
+}
+
+.div-projet {
+    h2 {
+        font-family: "sofia-pro", sans-serif;
+font-weight: 700;
+font-style: normal;
+    }
+}
+
+.project-detail-content {
+    h2 {
+        font-family: "logic-monospace", mono;
+    }
+}
+
+* {
+    scrollbar-width: none; // Firefox
+    -ms-overflow-style: none; // IE/Edge
+    box-sizing: border-box;
+
+    &::-webkit-scrollbar {
+        display: none; // Chrome/Safari/Opera
+    }
+}
+
+// what's happening
