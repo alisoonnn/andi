@@ -249,6 +249,10 @@ body {
             align-items: center;
             gap: 3vh;
 
+            img {
+                max-height: 100%;
+            }
+
             img:first-child {
                 padding-top: 2vh;
             }
