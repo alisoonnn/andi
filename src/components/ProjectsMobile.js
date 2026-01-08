@@ -84,7 +84,7 @@ const ProjectsMobile = () => {
     return (
         <section className={`projects-page-wrapper mobile ${isDetailPage ? 'is-detail-page' : ''}`}>
             <div className="projects-page mobile-vertical">
-                {[1, 2, 3, 4, 5, 6, 7, 8].map((iteration) => (
+                {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map((iteration) => (
                     projects.map((project) => (
                         <motion.div
                             key={`${project.id}-${iteration}`}
