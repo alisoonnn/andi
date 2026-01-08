@@ -1,4 +1,4 @@
-const WORDPRESS_GRAPHQL_URL = process.env.REACT_APP_GRAPHQL_URL || 'http://andi.local/graphql';
+const WORDPRESS_GRAPHQL_URL = process.env.REACT_APP_GRAPHQL_URL || 'https://andi-design.fr/graphql';
 
 export const fetchProjects = async () => {
   try {
