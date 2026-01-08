@@ -30,7 +30,7 @@ const Header = () => {
                 animate={{
                     scale: isMobile ? 1 : (isOnAnyProjectPage ? 0.5 : 1),
                     y: isMobile ? 0 : (isOnAnyProjectPage ? -280 : 0),
-                    opacity: isOnAnyProjectPage ? 0.2 : 1
+                    opacity: isMobile && isOnAnyProjectPage ? 0.2 : 1
                 }}
                 transition={{ 
                     duration: isProjectDetailPage ? 0 : 0.4,
