@@ -5,20 +5,10 @@ import { motion } from 'framer-motion';
 
 const Header = () => {
     const location = useLocation();
-    const [scrollPos, setScrollPos] = useState(0);
     const [isMobile, setIsMobile] = useState(window.matchMedia('(max-width: 768px)').matches);
     
     const isProjectDetailPage = location.pathname.startsWith('/projects/') && location.pathname !== '/projects';
     const isOnAnyProjectPage = location.pathname.startsWith('/projects');
-
-    useEffect(() => {
-        const handleScroll = () => {
-            setScrollPos(window.scrollY);
-        };
-
-        window.addEventListener("scroll", handleScroll);
-        return () => window.removeEventListener("scroll", handleScroll);
-    }, []);
 
     useEffect(() => {
         const mobileQuery = window.matchMedia('(max-width: 768px)');
@@ -37,12 +27,9 @@ const Header = () => {
             <motion.a 
                 href="/" 
                 className="logo-link"
-                animate={!isMobile ? {
-                    // Animation desktop
-                    scale: isOnAnyProjectPage ? 0.5 : 1,
-                    y: isOnAnyProjectPage ? -280 : 0,
-                } : {
-                    // Animation mobile (juste opacity)
+                animate={{
+                    scale: isMobile ? 1 : (isOnAnyProjectPage ? 0.5 : 1),
+                    y: isMobile ? 0 : (isOnAnyProjectPage ? -280 : 0),
                     opacity: isOnAnyProjectPage ? 0.2 : 1
                 }}
                 transition={{ 
