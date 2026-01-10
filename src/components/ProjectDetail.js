@@ -21,20 +21,44 @@ const ProjectDetail = () => {
             
             if (wpProjects.length > 0) {
                 const transformedProjects = wpProjects.map(project => ({
-                    id: project.id,
-                    slug: project.title.toLowerCase().replace(/[^a-z]/g, ''),
-                    title: project.title,
-                    category: project.projet?.category || 'Projet',
-                    description: project.content || '',
-                    thumbnail: project.featuredImage?.node?.sourceUrl,
-                    image1: project.projet?.imageDuProjet1?.node?.sourceUrl,
-                    image2: project.projet?.imageDuProjet2?.node?.sourceUrl,
-                    image3: project.projet?.imageDuProjet3?.node?.sourceUrl,
-                    image4: project.projet?.imageDuProjet4?.node?.sourceUrl,
-                    image5: project.projet?.imageDuProjet5?.node?.sourceUrl,
-                    image6: project.projet?.imageDuProjet6?.node?.sourceUrl,
-                    video: project.projet?.videoDuProjet?.node?.mediaItemUrl,
-                    imageAlt: project.featuredImage?.node?.altText
+                  id: project.id,
+slug: project.title.toLowerCase().replace(/[^a-z]/g, ''),
+title: project.title,
+category: project.projet?.category || 'Projet',
+description: project.content || '',
+thumbnail: project.featuredImage?.node?.sourceUrl,
+image1: project.projet?.imageDuProjet1?.node?.sourceUrl,
+image2: project.projet?.imageDuProjet2?.node?.sourceUrl,
+image3: project.projet?.imageDuProjet3?.node?.sourceUrl,
+image4: project.projet?.imageDuProjet4?.node?.sourceUrl,
+image5: project.projet?.imageDuProjet5?.node?.sourceUrl,
+image6: project.projet?.imageDuProjet6?.node?.sourceUrl,
+image7: project.projet?.imageDuProjet7?.node?.sourceUrl,
+image8: project.projet?.imageDuProjet8?.node?.sourceUrl,
+image9: project.projet?.imageDuProjet9?.node?.sourceUrl,
+image10: project.projet?.imageDuProjet10?.node?.sourceUrl,
+image11: project.projet?.imageDuProjet11?.node?.sourceUrl,
+image12: project.projet?.imageDuProjet12?.node?.sourceUrl,
+image13: project.projet?.imageDuProjet13?.node?.sourceUrl,
+image14: project.projet?.imageDuProjet14?.node?.sourceUrl,
+image15: project.projet?.imageDuProjet15?.node?.sourceUrl,
+image16: project.projet?.imageDuProjet16?.node?.sourceUrl,
+image17: project.projet?.imageDuProjet17?.node?.sourceUrl,
+image18: project.projet?.imageDuProjet18?.node?.sourceUrl,
+image19: project.projet?.imageDuProjet19?.node?.sourceUrl,
+image20: project.projet?.imageDuProjet20?.node?.sourceUrl,
+image21: project.projet?.imageDuProjet21?.node?.sourceUrl,
+image22: project.projet?.imageDuProjet22?.node?.sourceUrl,
+image23: project.projet?.imageDuProjet23?.node?.sourceUrl,
+image24: project.projet?.imageDuProjet24?.node?.sourceUrl,
+image25: project.projet?.imageDuProjet25?.node?.sourceUrl,
+image26: project.projet?.imageDuProjet26?.node?.sourceUrl,
+image27: project.projet?.imageDuProjet27?.node?.sourceUrl,
+image28: project.projet?.imageDuProjet28?.node?.sourceUrl,
+image29: project.projet?.imageDuProjet29?.node?.sourceUrl,
+image30: project.projet?.imageDuProjet30?.node?.sourceUrl,
+video: project.projet?.videoDuProjet?.node?.mediaItemUrl,
+imageAlt: project.featuredImage?.node?.altText
                 }));
                 console.log('🎥 Premier projet avec vidéo:', transformedProjects[0]);
 console.log('🎥 Vidéo URL:', transformedProjects[0]?.video);
@@ -170,7 +194,7 @@ console.log('🎥 Vidéo URL:', transformedProjects[0]?.video);
                 </motion.div>
                 
                 <div className='project-detail-content'>
-                    <h1>{project.title}</h1>
+                    <h1>{project.title}</h1> - 
                     <h2 className="category">{project.category}</h2>
 
                     {/* Bouton read more SEULEMENT sur mobile */}
