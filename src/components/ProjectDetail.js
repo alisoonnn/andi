@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { fetchProjects } from '../services/wordpress';
+import scrollDown from "../assets/images/scroll-down.svg";
 
 const ProjectDetail = () => {
     const { projectId } = useParams();
@@ -12,6 +13,16 @@ const ProjectDetail = () => {
     const [lightboxImage, setLightboxImage] = useState(null);
     const [projects, setProjects] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [hasSeenScrollHint, setHasSeenScrollHint] = useState(false);
+    const [isScrollable, setIsScrollable] = useState(false);
+    const imageContainerRef = useRef(null);
+
+    // Détecte le scroll
+    const handleImageScroll = () => {
+        if (!hasSeenScrollHint) {
+            setHasSeenScrollHint(true);
+        }
+    };
 
     // Charger les projets depuis WordPress
     useEffect(() => {
@@ -21,47 +32,47 @@ const ProjectDetail = () => {
             
             if (wpProjects.length > 0) {
                 const transformedProjects = wpProjects.map(project => ({
-                  id: project.id,
-slug: project.title.toLowerCase().replace(/[^a-z]/g, ''),
-title: project.title,
-category: project.projet?.category || 'Projet',
-description: project.content || '',
-thumbnail: project.featuredImage?.node?.sourceUrl,
-image1: project.projet?.imageDuProjet1?.node?.sourceUrl,
-image2: project.projet?.imageDuProjet2?.node?.sourceUrl,
-image3: project.projet?.imageDuProjet3?.node?.sourceUrl,
-image4: project.projet?.imageDuProjet4?.node?.sourceUrl,
-image5: project.projet?.imageDuProjet5?.node?.sourceUrl,
-image6: project.projet?.imageDuProjet6?.node?.sourceUrl,
-image7: project.projet?.imageDuProjet7?.node?.sourceUrl,
-image8: project.projet?.imageDuProjet8?.node?.sourceUrl,
-image9: project.projet?.imageDuProjet9?.node?.sourceUrl,
-image10: project.projet?.imageDuProjet10?.node?.sourceUrl,
-image11: project.projet?.imageDuProjet11?.node?.sourceUrl,
-image12: project.projet?.imageDuProjet12?.node?.sourceUrl,
-image13: project.projet?.imageDuProjet13?.node?.sourceUrl,
-image14: project.projet?.imageDuProjet14?.node?.sourceUrl,
-image15: project.projet?.imageDuProjet15?.node?.sourceUrl,
-image16: project.projet?.imageDuProjet16?.node?.sourceUrl,
-image17: project.projet?.imageDuProjet17?.node?.sourceUrl,
-image18: project.projet?.imageDuProjet18?.node?.sourceUrl,
-image19: project.projet?.imageDuProjet19?.node?.sourceUrl,
-image20: project.projet?.imageDuProjet20?.node?.sourceUrl,
-image21: project.projet?.imageDuProjet21?.node?.sourceUrl,
-image22: project.projet?.imageDuProjet22?.node?.sourceUrl,
-image23: project.projet?.imageDuProjet23?.node?.sourceUrl,
-image24: project.projet?.imageDuProjet24?.node?.sourceUrl,
-image25: project.projet?.imageDuProjet25?.node?.sourceUrl,
-image26: project.projet?.imageDuProjet26?.node?.sourceUrl,
-image27: project.projet?.imageDuProjet27?.node?.sourceUrl,
-image28: project.projet?.imageDuProjet28?.node?.sourceUrl,
-image29: project.projet?.imageDuProjet29?.node?.sourceUrl,
-image30: project.projet?.imageDuProjet30?.node?.sourceUrl,
-video: project.projet?.videoDuProjet?.node?.mediaItemUrl,
-imageAlt: project.featuredImage?.node?.altText
+                    id: project.id,
+                    slug: project.title.toLowerCase().replace(/[^a-z]/g, ''),
+                    title: project.title,
+                    category: project.projet?.category || 'Projet',
+                    description: project.content || '',
+                    thumbnail: project.featuredImage?.node?.sourceUrl,
+                    image1: project.projet?.imageDuProjet1?.node?.sourceUrl,
+                    image2: project.projet?.imageDuProjet2?.node?.sourceUrl,
+                    image3: project.projet?.imageDuProjet3?.node?.sourceUrl,
+                    image4: project.projet?.imageDuProjet4?.node?.sourceUrl,
+                    image5: project.projet?.imageDuProjet5?.node?.sourceUrl,
+                    image6: project.projet?.imageDuProjet6?.node?.sourceUrl,
+                    image7: project.projet?.imageDuProjet7?.node?.sourceUrl,
+                    image8: project.projet?.imageDuProjet8?.node?.sourceUrl,
+                    image9: project.projet?.imageDuProjet9?.node?.sourceUrl,
+                    image10: project.projet?.imageDuProjet10?.node?.sourceUrl,
+                    image11: project.projet?.imageDuProjet11?.node?.sourceUrl,
+                    image12: project.projet?.imageDuProjet12?.node?.sourceUrl,
+                    image13: project.projet?.imageDuProjet13?.node?.sourceUrl,
+                    image14: project.projet?.imageDuProjet14?.node?.sourceUrl,
+                    image15: project.projet?.imageDuProjet15?.node?.sourceUrl,
+                    image16: project.projet?.imageDuProjet16?.node?.sourceUrl,
+                    image17: project.projet?.imageDuProjet17?.node?.sourceUrl,
+                    image18: project.projet?.imageDuProjet18?.node?.sourceUrl,
+                    image19: project.projet?.imageDuProjet19?.node?.sourceUrl,
+                    image20: project.projet?.imageDuProjet20?.node?.sourceUrl,
+                    image21: project.projet?.imageDuProjet21?.node?.sourceUrl,
+                    image22: project.projet?.imageDuProjet22?.node?.sourceUrl,
+                    image23: project.projet?.imageDuProjet23?.node?.sourceUrl,
+                    image24: project.projet?.imageDuProjet24?.node?.sourceUrl,
+                    image25: project.projet?.imageDuProjet25?.node?.sourceUrl,
+                    image26: project.projet?.imageDuProjet26?.node?.sourceUrl,
+                    image27: project.projet?.imageDuProjet27?.node?.sourceUrl,
+                    image28: project.projet?.imageDuProjet28?.node?.sourceUrl,
+                    image29: project.projet?.imageDuProjet29?.node?.sourceUrl,
+                    image30: project.projet?.imageDuProjet30?.node?.sourceUrl,
+                    video: project.projet?.videoDuProjet?.node?.mediaItemUrl,
+                    imageAlt: project.featuredImage?.node?.altText
                 }));
                 console.log('🎥 Premier projet avec vidéo:', transformedProjects[0]);
-console.log('🎥 Vidéo URL:', transformedProjects[0]?.video);
+                console.log('🎥 Vidéo URL:', transformedProjects[0]?.video);
                 transformedProjects.reverse();
                 setProjects(transformedProjects);
             } else {
@@ -106,6 +117,48 @@ console.log('🎥 Vidéo URL:', transformedProjects[0]?.video);
         setLightboxOpen(true);
     };
 
+    // Vidéo + Images (définis après project, avant les if)
+    const videoArray = project ? (project.video ? [project.video] : []) : [];
+    const allImages = project ? [
+        project.image1,
+        project.image2,
+        project.image3,
+        project.image4,
+        project.image5,
+        project.image6,
+        project.image7,
+        project.image8,
+        project.image9,
+        project.image10,
+        project.image11,
+        project.image12,
+        project.image13,
+        project.image14,
+        project.image15,
+        project.image16,
+        project.image17,
+        project.image18,
+        project.image19,
+        project.image20,
+        project.image21,
+        project.image22,
+        project.image23,
+        project.image24,
+        project.image25,
+        project.image26,
+        project.image27,
+        project.image28,
+        project.image29,
+        project.image30
+    ].filter(Boolean) : [];
+
+    // Vérifie si la div est scrollable (avant les if, avec vérification pour éviter les conflits)
+useEffect(() => {
+    if (!project) return;  // Ne fait rien si project n'est pas encore chargé
+    const totalElements = videoArray.length + allImages.length;
+    setIsScrollable(totalElements > 2);  // Scrollable si plus de 2 éléments
+}, [allImages, videoArray]);  // Dépend de allImages et videoArray
+
     if (loading) {
         return <div className="project-detail-overlay">Chargement...</div>;
     }
@@ -114,41 +167,7 @@ console.log('🎥 Vidéo URL:', transformedProjects[0]?.video);
         return <div className="project-detail-overlay">Projet non trouvé</div>;
     }
 
-    // Vidéo + Images
-    const videoArray = project.video ? [project.video] : [];
-    const allImages = [
-        project.image1,
-project.image2,
-project.image3,
-project.image4,
-project.image5,
-project.image6,
-project.image7,
-project.image8,
-project.image9,
-project.image10,
-project.image11,
-project.image12,
-project.image13,
-project.image14,
-project.image15,
-project.image16,
-project.image17,
-project.image18,
-project.image19,
-project.image20,
-project.image21,
-project.image22,
-project.image23,
-project.image24,
-project.image25,
-project.image26,
-project.image27,
-project.image28,
-project.image29,
-project.image30
-    ].filter(Boolean);
-
+    // Le reste du code reste inchangé
     return (
         <motion.div 
             className="project-detail-overlay"
@@ -165,9 +184,34 @@ project.image30
                 <motion.div 
                     layoutId={`project-${project.slug}-img`}
                     className={`project-detail-image img-${project.slug}`}
+                    onScroll={handleImageScroll}
                     style={{ cursor: 'pointer' }}
+                    ref={imageContainerRef}  // Ref ajouté ici
                 >
-                   {/* Si desktop : vidéo en premier */}
+                    {/* Icon scroll - seulement sur mobile */}
+                    {isMobile && isScrollable && (
+                        <motion.div
+                            className='scrolldown-project-detail-wrapper'
+                            animate={{
+                                opacity: hasSeenScrollHint ? 0 : 1, 
+                            }}
+                        >
+                            <motion.img
+                                animate={{
+                                    opacity: hasSeenScrollHint ? 0 : [0, 0.8, 0], 
+                                }}
+                                transition={{
+                                    duration: 0.8,
+                                    repeat: hasSeenScrollHint ? 0 : Infinity,
+                                    ease: "linear"
+                                }}
+                                src={scrollDown} 
+                                className='scrolldown-project-detail' 
+                                alt="Scroll Down" 
+                            />
+                        </motion.div>
+                    )}
+                    {/* Si desktop : vidéo en premier */}
                     {!isMobile && videoArray.map((video, idx) => (
                         <video 
                             key={`video-${idx}`}
@@ -201,24 +245,40 @@ project.image30
                         !project.video && <div style={{width: '100%', height: '100%', backgroundColor: '#ddd'}} />
                     )}
 
-                {/* Si mobile : vidéo à la fin */}
-                {isMobile && videoArray.map((video, idx) => (
-                    <video 
-                        key={`video-mobile-${idx}`}
-                        src={video}
-                        controls
-                        style={{
-                            width: '90%',
-                            height: 'auto',
-                            marginTop: '12vh',
-                            marginBottom: '12vh'
-                        }}
-                    />
-                ))}
+                    {/* Si mobile : vidéo à la fin */}
+                    {isMobile && videoArray.map((video, idx) => (
+                        <video 
+                            key={`video-mobile-${idx}`}
+                            src={video}
+                            controls
+                            style={{
+                                width: '90%',
+                                height: 'auto',
+                                marginTop: '12vh',
+                                marginBottom: '12vh'
+                            }}
+                        />
+                    ))}
                 </motion.div>
+                {/* Icon scroll - seulement sur desktop */}
+                {!isMobile && (
+                    <motion.img
+                        animate={{
+                            opacity: hasSeenScrollHint ? 0 : [0, 1, 0], 
+                        }}
+                        transition={{
+                            duration: 0.8,
+                            repeat: hasSeenScrollHint ? 0 : Infinity,
+                            ease: "linear"
+                        }}
+                        src={scrollDown} 
+                        className='scrolldown-project-detail' 
+                        alt="Scroll Down" 
+                    />
+                )}
                 
                 <div className='project-detail-content'>
-                    <h1>{project.title}</h1> - 
+                    <h1>{project.title}</h1>
                     <h2 className="category">{project.category}</h2>
 
                     {/* Bouton read more SEULEMENT sur mobile */}

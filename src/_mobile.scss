@@ -240,6 +240,25 @@
     min-height: 0;
         }
 
+        .scrolldown-project-detail-wrapper {
+            width: 90vw;
+            height: 100%;
+            background-color: #f2f2f2dd;
+            position: absolute;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            // padding-bottom: 25vh;
+            pointer-events: none;
+
+            img {
+                width: 40vw!important;
+                height: auto!important;
+                position: absolute;
+                top: 35vh;
+            }
+        }
+
         .img-interlinked {
             flex-direction: column-reverse!important;
         }
