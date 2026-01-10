@@ -118,11 +118,35 @@ console.log('🎥 Vidéo URL:', transformedProjects[0]?.video);
     const videoArray = project.video ? [project.video] : [];
     const allImages = [
         project.image1,
-        project.image2,
-        project.image3,
-        project.image4,
-        project.image5,
-        project.image6
+project.image2,
+project.image3,
+project.image4,
+project.image5,
+project.image6,
+project.image7,
+project.image8,
+project.image9,
+project.image10,
+project.image11,
+project.image12,
+project.image13,
+project.image14,
+project.image15,
+project.image16,
+project.image17,
+project.image18,
+project.image19,
+project.image20,
+project.image21,
+project.image22,
+project.image23,
+project.image24,
+project.image25,
+project.image26,
+project.image27,
+project.image28,
+project.image29,
+project.image30
     ].filter(Boolean);
 
     return (
